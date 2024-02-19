@@ -56,11 +56,11 @@
                                     "key_input"  :"B"
                                 },
                                 {
-                                    "state_name" : "hide",
+                                    "state_name" : "n_realm",
                                     "key_input"  :"C"
                                 },
                                 {
-                                    "state_name" : "predead",
+                                    "state_name" : "pre_dead",
                                     "key_input"  :"D"
                                 }
 
@@ -195,28 +195,406 @@
             "and strategy to your quest through the malevolent abyss.<br><br>",
             "As you approach one of the towering structures in the demonic abyss, the heat intensifies, and the rhythmic<br>", 
             "sounds of enslaved beings laboring under demonic oppression become palpable. The twisted silhouette<br>",
-            "of the tower looms ominously against the fiery sky, casting long shadows that dance eerily across the burning landscape."],
+            "of the tower looms ominously against the fiery sky, casting long shadows that dance eerily across the burning landscape.<br>", 
+            "<br>What do you do?<br>", "<br>A & B = Talk to one the Slaves <br>C & D = Find a way in the tower"],
             "next_state" : [ 
                                {
-                                    "state_name" : "sneak_n_world",
+                                    "state_name" : "slave_talk_0",
                                     "key_input"  : "A"
                                 },
                                 {
-                                    "state_name" : "sneak_n_world",
+                                    "state_name" : "slave_talk_0",
                                     "key_input"  :"B"
                                 },
                                 {
-                                    "state_name" : "pre_dead",
+                                    "state_name" : "tower_start",
                                     "key_input"  :"C"
                                 },
                                 {
-                                    "state_name" : "n_realm",
+                                    "state_name" : "tower_start",
                                     "key_input"  :"D"
                                 }
 
                             ],
             "stim_change" : 1 
+        },
+        "slave_talk_0" : { 
+            "text" : ["You approach one of the slaves, you whisper to it asking for a way in the tower... the slave ignores you",
+                        "...<br>What do you do?...<br>A & B = Talk to another slaves <br>C & D = Find a way in the tower"],
+            "next_state" : [ 
+                               {
+                                    "state_name" : "slave_talk_0",
+                                    "key_input"  : "A"
+                                },
+                                {
+                                    "state_name" : "slave_talk_0",
+                                    "key_input"  :"B"
+                                },
+                                {
+                                    "state_name" : "tower_start",
+                                    "key_input"  :"C"
+                                },
+                                {
+                                    "state_name" : "tower_start",
+                                    "key_input"  :"D"
+                                }
+
+                            ],
+            "stim_change" : 1 
+        }, 
+        "tower_start" : { 
+            "text" : ["Steeling yourself, you decide to enter the towering structure in the demonic abyss. The air inside is <br>",
+                        "thick with an otherworldly tension, and the dimly lit passages reveal mysterious corridors leading <br>",
+                        "deeper into the heart of the infernal construct.<br><br>",
+                        "Navigating the labyrinthian corridors within the demonic tower, slaves engaged in mason work ignore <br>",
+                        "your presence, toiling tirelessly as if you're invisible. Amidst the disorienting twists and turns, <br>",
+                        "you discover an empty room illuminated by an eerie red glow, its center adorned with a pulsating jewel. <br>",
+                        "The otherworldly atmosphere invites exploration, as the slaves carry on with their labor, oblivious to <br>",
+                        "your intrusion into the infernal heart of the construct.",
+                        "<br>What do you do?...<br>A = Confront the Slaves<br> B = Continue Exploring <br>C = Examine Red Jewel <br> D = Do nothing"],
+            "next_state" : [ 
+                               {
+                                    "state_name" : "pre_s_talk_1",
+                                    "key_input"  : "A"
+                                },
+                                {
+                                    "state_name" : "pre_doNone",
+                                    "key_input"  :"B"
+                                },
+                                {
+                                    "state_name" : "start_redJewel",
+                                    "key_input"  :"C"
+                                },
+                                {
+                                    "state_name" : "pre_doNone",
+                                    "key_input"  :"D"
+                                }
+
+                            ],
+            "stim_change" : 1 
+        },
+        "pre_s_talk_1": {
+            "next_state" : [ "slave_talk_1" ],
+            "stim_change" : 10,
+            "show_button_0" : "1",
+            "point_change" : 1
+        },
+        "pre_doNone": {
+            "next_state" : [ "doNone" ],
+            "stim_change" : 10,
+            "show_button_0" : "1",
+            "point_change" : 1
+        },
+        "slave_talk_1" : { 
+            "text" : ["As you approach the slave and try to communicate with it. The slave ignores you as if you didn't talk to it at all.",
+                        "...<br>You can only do one thing, which is look at the pretty red jewel"],
+            "next_state" : [ 
+                {
+                        "state_name" : "start_redJewel",
+                        "key_input"  : "Okay"
+                    }
+
+                ],
+            "stim_change" : 1 
+        },
+        "doNone" : { 
+            "text" : ["Either exploring more or doing nothing leads to the same result, you stand before an empty room with a red jewel"],
+            "next_state" : [ 
+                {
+                        "state_name" : "start_redJewel",
+                        "key_input"  : "Okay"
+                    }
+
+                ],
+            "stim_change" : 1 
+        },
+        "start_redJewel": {
+            "next_state" : [ "redJewel" ],
+            "stim_change" : 10,
+            "show_button_0" : "a",
+            "show_button_1" : "b",
+            "show_button_2" : "c",
+            "show_button_3" : "d",
+            "point_change" : 1
+        },
+        "redJewel" : { 
+            "text" : ["The red jewel is more than just a gem; it's also a map. Centered around the current tower, it<br>",
+                        "extends across thousands of acres, revealing the locations of all surrounding towers. It appears as<br>",
+                        "you can zoom in on the tower, and the map provides a detailed layout of the internal structure of the<br>",
+                        "current tower exposing a room with a mysterious chamber that seemingly houses a portal—although the map alone<br>",
+                        "doesn't offer clarity on its nature. As the door behind you slams shut, only two exits remain:<br>",
+                        "a window and a dark passageway emitting ominous sounds, leaving you with limited choices in the<br>",
+                        "face of uncertainty.<br><br>",
+                        "What do you do?...<br>A or B = Go through the dark passageway <br>C or D = exit the tower via the window"],
+            "next_state" : [ 
+                               {
+                                    "state_name" : "pre_dark_passage",
+                                    "key_input"  : "A"
+                                },
+                                {
+                                    "state_name" : "pre_dark_passage",
+                                    "key_input"  :"B"
+                                },
+                                {
+                                    "state_name" : "pre_exit_tower_window",
+                                    "key_input"  :"C"
+                                },
+                                {
+                                    "state_name" : "pre_exit_tower_window",
+                                    "key_input"  :"D"
+                                }
+
+                            ],
+            "stim_change" : 1 
+        },
+        "pre_exit_tower_window": {
+            "next_state" : [ "exit_tower_window" ],
+            "stim_change" : 10,
+            "show_button_0" : "1",
+            "point_change" : 1
+        },
+        "exit_tower_window" : { 
+            "text" : ["It seems that space and time in the abyss is much different than space and time in the normal world<br>",
+                        "What seemed as a short distance down is over hundreds of stories tall<br>", "as you descend, you are able to leave that world, but not as you thought you would..."],
+            "next_state" : [ 
+                {
+                        "state_name" : "death",
+                        "key_input"  : "Okay"
+                    }
+
+                ],
+            "stim_change" : 1 
+        },
+        "pre_dark_passage": {
+            "next_state" : [ "darkPassage_0" ],
+            "stim_change" : 10,
+            "show_button_0" : "1",
+            "point_change" : 1
+        },
+        "darkPassage_0" : { 
+            "text" : ["As you step into the dark passage, an immediate shroud of blackness envelops you. The air is<br>",
+                        "thick with an unsettling stillness, broken only by faint echoes that resonate through the obscurity.<br>",
+                        "The narrow corridor extends into the unknown, its jagged walls and uneven floor revealing little<br>",
+                        "about what lies ahead. The foreboding darkness seems to amplify the mysterious sounds<br>",
+                        "emanating from deeper within, leaving you to navigate this enigmatic passageway with a<br>",
+                        "heightened sense of trepidation."],
+            "next_state" : [ 
+                {
+                        "state_name" : "darkPassage_1",
+                        "key_input"  : "Okay"
+                    }
+
+                ],
+            "stim_change" : 1 
+        },
+        "darkPassage_1" : { 
+            "text" : ["As you venture deeper into the dark passageway, the air grows colder, carrying an eerie chill that<br>",
+                        "sends shivers down your spine. The uneven floor beneath your feet feels slick and cold, hinting at<br>",
+                        "dampness that pervades the encroaching darkness. The faint echoes persist, now taking on an almost<br>",
+                        "rhythmic quality, as if unseen forces are whispering secrets through the shadows."],
+            "next_state" : [ 
+                {
+                        "state_name" : "darkPassage_2",
+                        "key_input"  : "Okay"
+                    }
+
+                ],
+            "stim_change" : 1 
+        },
+        "darkPassage_2" : { 
+            "text" : ["Occasional dim light emanates from cracks in the damp walls, revealing unsettling symbols etched<br>",
+                        "into the stone. Their meaning eludes you, adding an additional layer of mystery to the already<br>",
+                        "foreboding atmosphere. The shadows seem to dance and flicker, playing tricks on your perception<br>",
+                        "and heightening the sense of disorientation in this labyrinthine passage.<br>"],
+            "next_state" : [ 
+                {
+                        "state_name" : "darkPassage_3",
+                        "key_input"  : "Okay"
+                    }
+
+                ],
+            "stim_change" : 1 
+        },
+        "darkPassage_3" : { 
+            "text" : ["The narrow confines of the corridor create a claustrophobic ambiance, and a sense of isolation<br>",
+                        "settles in as the door behind you remains sealed. The ominous sounds, once distant, now echo with<br>",
+                        "greater intensity, their origin becoming increasingly indiscernible. Each step forward feels like a<br>",
+                        "deliberate plunge into the unknown, a journey fraught with uncertainty and unseen perils.<br><br>",
+                        "As you press on, the dark passageway takes an unexpected turn, opening into a cavernous chamber.<br>",
+                        "The space is vast and cavernous, with towering pillars reaching toward an unseen ceiling. Glowing<br>",
+                        "crystals embedded in the walls cast an otherworldly glow, revealing intricate carvings and arcane<br>",
+                        "symbols that adorn the cavern's interior. The echoes of your footsteps blend with the mysterious<br>",
+                        "hum of an unseen energy source, creating an unsettling symphony that resonates through the expansive<br>",
+                        "chamber."],
+            "next_state" : [ 
+                {
+                        "state_name" : "pre_dp_4",
+                        "key_input"  : "Okay"
+                    }
+
+                ],
+            "stim_change" : 1 
+        },
+        "pre_dp_4": {
+            "next_state" : [ "darkPassage_4" ],
+            "stim_change" : 10,
+            "show_button_0" : "a",
+            "show_button_1" : "b",
+            "show_button_2" : "c",
+            "show_button_3" : "d",
+            "point_change" : 1
+        },
+        "darkPassage_4" : { 
+            "text" : ["Suddenly, the passageway opens into a larger chamber, its dimensions hidden in the darkness. Dim, ghostly <br>",
+                        "light emanates from an unknown source, revealing cryptic symbols etched into the walls. The air in the <br>",
+                        "chamber feels charged with an otherworldly energy, and the sense of being watched becomes palpable. <br>",
+                        "Options present themselves: continue further into the unknown, or retreat back into the familiarity <br>",
+                        "of the dark passageway, now aware that every step forward brings you deeper into a realm of uncertainty <br>",
+                        "and ancient mysteries.<br><br>",
+                        "What do you do?...<br>A or B = continue further into the unknown <br>C or D = retreat back"],
+            "next_state" : [ 
+                {
+                    "state_name" : "pre_dark_pass_cont",
+                    "key_input"  : "A"
+                },
+                {
+                    "state_name" : "pre_dark_pass_cont",
+                    "key_input"  :"B"
+                },
+                {
+                    "state_name" : "pre_dark_pass_retret",
+                    "key_input"  :"C"
+                },
+                {
+                    "state_name" : "pre_dark_pass_retret",
+                    "key_input"  :"D"
+                }
+
+                ],
+            "stim_change" : 1 
+        },
+        "pre_dark_pass_cont": {
+            "next_state" : [ "dark_pass_cont" ],
+            "stim_change" : 10,
+            "show_button_0" : "1",
+            "point_change" : 1
+        },
+        "pre_dark_pass_retret": {
+            "next_state" : [ "dark_pass_retret" ],
+            "stim_change" : 10,
+            "show_button_0" : "1",
+            "point_change" : 1
+        },
+        "dark_pass_cont" : { 
+            "text" : ["Continuing forward dark passageway, you finally reach the end and arrive at the <br>",
+            "grandeur of the demonic tower's throne room. The vast space is adorned with macabre <br>",
+            "tapestries depicting scenes of infernal conquests, and the air is thick with an oppressive <br>",
+            "energy. At the center of the room, an imposing throne rises, intricately carved with <br>",
+            "grotesque figures and surrounded by flickering braziers that cast long, dancing shadows <br>",
+            "across the chamber.<br><br>",
+            "The towering pillars that flank the throne seem to reach into the unseen heights, <br>",
+            "their surfaces etched with demonic runes that pulse with an ominous glow. The echoing <br>",
+            "footsteps in this vast chamber amplify the sense of isolation, making the throne room <br>",
+            "feel like a sacred yet malevolent sanctum. Sinister statues of demonic entities guard <br>",
+            "the perimeter, their cold, stone gazes fixed upon any intruders who dare to enter.<br><br>",
+            "Adjacent to the throne, an ornate door captures your gaze, adorned with intricate<br>",
+            "carvings and embellishments. It beckons as a passage to the private quarters of<br>",
+            "whoever rules this demonic domain. The ominous air suggests that behind this door<br>",
+            "lies more than mere chambers – perhaps the key to unlocking the deeper mysteries<br>",
+            "of the tower. The choices within the throne room unfold like a tapestry of<br>",
+            "potential revelations, as the arches and the ornate door become gateways to the<br>",
+            "unknown within the heart of the demonic construct.<br><br>",
+            "Within this foreboding throne room, you notice an intriguing pair of arches that stand <br>",
+            "in silent vigil. The arches, adorned with cryptic symbols and pulsating with a faint <br>",
+            "energy, hint at a deeper purpose. The space between them resonates with an otherworldly <br>",
+            "hum, suggesting that they might serve as a gateway—a portal to realms unknown. The <br>",
+            "decision to approach these arches, however, weighs heavy with uncertainty, as their <br>",
+            "true nature and the consequences of activation remain shrouded in the enigma of the <br>",
+            "demonic tower."],
+            "next_state" : [ 
+                {
+                        "state_name" : "throne_room_demon_talk",
+                        "key_input"  : "Okay"
+                    }
+
+                ],
+            "stim_change" : 1 
+        },
+        "dark_pass_retret" : { 
+            "text" : ["Attempting to retreat back through the dark passageway proves futile, as an unforeseen force<br>",
+                        "redirects your path, compelling you to circle around and face forward once again. The narrow<br>",
+                        "corridor seems to defy your attempts to backtrack, its shadows shifting and contorting with an<br>",
+                        "otherworldly will. Each step backward becomes a journey in itself, twisting and guiding you<br>",
+                        "relentlessly, as if the very architecture of the demonic tower resists any attempt to escape<br>",
+                        "its depths.<br><br>",
+                        "As you press forward, the air grows thicker with an unsettling energy, and the echoes of your<br>",
+                        "footsteps now echo with a dissonant resonance. The oppressive atmosphere seems to heighten,<br>",
+                        "creating a sense of claustrophobia within the winding passage. The walls, once static and<br>",
+                        "unyielding, now appear to pulse with an unseen force, as if the very essence of the demonic<br>",
+                        "realm is pressing in around you.<br><br>",
+                        "Despite your instincts urging you to turn back, the passageway unfolds into unexpected twists<br>",
+                        "and turns. The dim light from the glowing crystals casts long, distorted shadows, playing tricks<br>",
+                        "on your perception. The sensation of being guided forward, regardless of your intentions, intensifies<br>",
+                        "the feeling of being ensnared within the malevolent grasp of the demonic tower.<br><br>",
+                        "The choice to retreat becomes a paradoxical journey, forcing you deeper into the heart of the<br>",
+                        "enigmatic labyrinth. Each moment of resistance only strengthens the pull of the dark passageway,<br>",
+                        "leaving you with a profound sense of being entangled in the mysterious forces that govern the<br>",
+                        "demonic construct."],
+            "next_state" : [ 
+                {
+                        "state_name" : "dark_pass_cont",
+                        "key_input"  : "Okay"
+                    }
+
+                ],
+            "stim_change" : 1 
+        },
+        "throne_room_demon_talk" : { 
+            "text" : ["A powerful, very tall demon emerges from the private door into the throne room, his<br>",
+            "imposing presence commanding attention. His flaming eyes fixate on you, and feathers<br>",
+            "cover his entire body, creating an otherworldly aura. Sharp talons replace hands that<br>",
+            "could easily rend stone, and he introduces himself as \"Prince.\" - Ruler of the Abyss.<br><br>",
+            "With a commanding gaze, he acknowledges your quest and the desire to find a way home.<br>",
+            "In a voice both regal and foreboding, he reveals his understanding of your plight and<br>",
+            "the challenges that brought you to the demonic realm. He hints at a task, weaving the<br>",
+            "threads of destiny and challenging you to prove your worth in this malevolent domain.<br><br>",
+            "\"The path you seek is laden with trials, mortal,\" Prince declares, his voice resonating t<br>",
+            "hrough the throne room. \"I offer you a chance to earn your passage home, but not without cost.<br>",
+            "A task awaits, one that will test your resolve and prowess. The fate of realms hangs in the<br>",
+            "balance, and only through this undertaking shall you find the key to your salvation. Choose<br>",
+            "wisely, for your destiny is now entwined with the shadows that dance within this tower.\" The<br>",
+            "air in the throne room becomes charged with tension as Prince unfolds the details of the daunting<br>",
+            "quest that lies ahead."],
+            "next_state" : [ 
+                {
+                        "state_name" : "chapter_end",
+                        "key_input"  : "Okay"
+                    }
+
+                ],
+            "stim_change" : 1 
+        },
+        "chapter_end" : { 
+            "text" : ["Having braved the abyss and faced the enigmatic Prince, the player now stands at the<br>",
+            "precipice of a new chapter. Sent on a perilous journey into another realm, the echoes<br>",
+            "of the demonic tower linger as a haunting prelude. Stay tuned for Chapter 2, where the<br>",
+            "unfolding saga will delve deeper into realms unknown, forging the player's destiny in<br>",
+            "the crucible of shadows and mysteries. Coming soon.<br>",
+            "Start Again..."],
+            "next_state" : [ 
+                {
+                        "state_name" : "pre_start",
+                        "key_input"  : "Okay"
+                    }
+
+                ],
+            "stim_change" : 1 
         }
+
+
+        
+
+
     }
 }
 
