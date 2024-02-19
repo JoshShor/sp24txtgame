@@ -1,0 +1,222 @@
+{
+    "start_state" : "start",
+
+    "states" : {
+        
+        "start": {
+            "text" : "Hello, you stand before a red door...",
+            "next_state" : [ 
+                               {
+                                    "state_name" : "enter_the_room",
+                                    "key_input"  : "Enter"
+                                }
+
+                            ],
+            "show_button_0" : "b"
+
+        },
+        "pre_start": {
+            "next_state" : [ "start" ],
+            "show_button_0" : "0",
+            "point_change" : 0,
+            "image_change" : "<img src=\"imgs/red_door.png\">"
+        },
+        "enter_the_room": {
+                        "next_state" : [ "dark_room" ],
+                        "stim_change" : 10,
+                        "show_button_0" : "a",
+                        "show_button_1" : "b",
+                        "show_button_2" : "c",
+                        "show_button_3" : "d",
+                        "point_change" : 1
+        },
+        "dark_room" : {
+            "text" : ["You're in a dimly lit room, shadows play across the floor, and a sense of mystery permeates the air.",
+                        "The only discernible feature is the faint outline of four doors, barely visible in the darkness.",
+                        "<br>The northern door emerges as a subtle silhouette, its deep blue hue appearing almost as a phantom in the low light.",
+                        "The brass handle catches the occasional glimmer, adding an enigmatic touch to its otherwise concealed form.", 
+                        "<br>To the east, the emerald green door blends seamlessly with the shadows, its textured surface giving it an elusive quality.",
+                        "The silver knob barely catches the ambient light, making it a subtle focal point in the shadowy space.",
+                        "<br>Opposite to the green door, the southern entrance exudes an aura of richness with its mahogany frame.",
+                        "The intricate carvings on its surface remain hidden, leaving only the hint of an elegant silhouette.",
+                        "The faint sound of distant music becomes more pronounced, adding an eerie undertone.", 
+                        "<br>The western door, painted in crimson, stands out as a deeper shade in the darkness.", 
+                        "The golden symbols etched onto its surface seem to shimmer faintly, teasing at the secrets concealed behind the door.",
+                        "As you approach, the echoes of laughter and rustling leaves become more pronounced, heightening the intrigue.",
+                        "<br>In this darkened room, the doors become elusive portals, each one concealing its own mysteries and potential adventures", 
+                        "in the shadows.",
+                        "<br>A = North <br>B = East<br>C = South<br>D = West"],
+            "next_state" : [ 
+                               {
+                                    "state_name" : "same_room",
+                                    "key_input"  : "A"
+                                },
+                                {
+                                    "state_name" : "pre_old_talk",
+                                    "key_input"  :"B"
+                                },
+                                {
+                                    "state_name" : "hide",
+                                    "key_input"  :"C"
+                                },
+                                {
+                                    "state_name" : "predead",
+                                    "key_input"  :"D"
+                                }
+
+                            ],
+            "dope_change" : 1
+        },
+        "same_room" : { 
+            "text" : "You exit this door, and through this door you're back in the same room...<br>Where do you want to go...<br>A = North <br>B = East<br>C = South<br>D = West",
+            "next_state" : [ 
+                               {
+                                    "state_name" : "same_room",
+                                    "key_input"  : "A"
+                                },
+                                {
+                                    "state_name" : "pre_old_talk",
+                                    "key_input"  :"B"
+                                },
+                                {
+                                    "state_name" : "n_realm",
+                                    "key_input"  :"C"
+                                },
+                                {
+                                    "state_name" : "pre_dead",
+                                    "key_input"  :"D"
+                                }
+
+                            ],
+            "stim_change" : 1 
+        },  
+        "hide" : {
+            "next_state" : "start",
+            "show_button_0" : "a",
+            "stim_change" : 1
+        },
+        "pre_dead": {
+            "next_state" : [ "death" ],
+            "stim_change" : 10,
+            "show_button_0" : "1",
+            "point_change" : 1
+        },
+        "death" : {
+            "text" : ["As the world fades to black, a distant smoke wafts on the horizon. Suddenly, Nihilus, the God of Death materializes from the shadows,", 
+                        "draped in a tenebrous robe with eyes gleaming like spectral flames. No words are spoken, only a silent and ominous presence.",
+                        "The surroundings pulse with otherworldly energy, marking a profound moment where the living confront the sudden appearance of mortality's deity.",
+                        "<br> Game Over"],
+            "next_state" : [ 
+                               {
+                                    "state_name" : "pre_start",
+                                    "key_input"  : "Okay"
+                                }
+
+                            ],
+            "stim_change" : 1
+        },
+        "pre_old_talk": {
+            "next_state" : [ "old_talk" ],
+            "stim_change" : 10,
+            "show_button_0" : "1",
+            "point_change" : 1
+        },
+        "old_talk" : {
+            "text" : ["The lone door opens to reveal a vast void, where the cosmos sprawls in every direction, even beneath your view.<br>",
+                        "Amidst the cosmic expanse stands an ancient figure—an elderly man with a long, flowing grey beard, his presence emanating timeless wisdom.<br>",
+                        "This enigmatic being is the All-Seer of Time. His eyes hold the weight of eons as they simultaneously witness the past, present, and future.<br><br>",
+                        "As you approach, the All-Seer imparts knowledge with a voice that resonates like the echoes of eternity.<br>",
+                        "He reveals the ominous journey that lies ahead, a quest fraught with challenges and revelations, leading you back to your homeland.<br>",
+                        "Although unable to directly send you home, the All-Seer, with a graceful sweep of his hand, channels the essence of time itself.<br>",
+                        "In an instant, you feel the currents of temporal energy enveloping you, and the cosmic expanse shifts.<br>"],
+            "next_state" : [ 
+                               {
+                                    "state_name" : "start_n_realm",
+                                    "key_input"  : "Okay"
+                                }
+
+                            ],
+            "stim_change" : 1
+        },
+        "start_n_realm": {
+            "next_state" : [ "n_realm" ],
+            "stim_change" : 10,
+            "show_button_0" : "a",
+            "show_button_1" : "b",
+            "show_button_2" : "c",
+            "show_button_3" : "d",
+            "point_change" : 1
+        },
+        "n_realm" : { 
+            "text" : ["You have entered the abyss, a realm saturated with demons, fire, and terrors beyond imagination.<br>",
+            "The landscape unfolds into a reddened desert, where the ground crackles with flames, and the <br>",
+            "ashen sky is adorned with clouds ablaze. Sinister towers punctuate the horizon, each tethered to <br>",
+            "the land by chains, manipulated by enslaved beings.<br>",
+            "<br>",
+            "Grotesque creatures with oblong-shaped bodies and two legs trudge relentlessly, their twisted arms <br>",
+            "protruding from the tops of their forms, bent and strained under the weight of the towering <br>",
+            "structures. These slaves, unearthly beings native to this forsaken land, labor ceaselessly under <br>",
+            "the watchful eyes of demons. Whip-wielding overseers ensure the perpetual motion of the towers, <br>",
+            "their demonic presence casting shadows across the fiery landscape.<br>",
+            "<br>",
+            "The air is thick with the scent of burning embers and the anguished moans of the enslaved. The <br>",
+            "reddened desert stretches endlessly, a desolate canvas of suffering and torment in this abyssal <br>",
+            "realm ruled by the demonic forces that orchestrate its grim existence.<br>", 
+            "<br>A & B = Move around while sneakily <br>C = Talk to a Demon<br>D = Do nothing"],
+            "next_state" : [ 
+                               {
+                                    "state_name" : "sneak_n_world",
+                                    "key_input"  : "A"
+                                },
+                                {
+                                    "state_name" : "sneak_n_world",
+                                    "key_input"  :"B"
+                                },
+                                {
+                                    "state_name" : "pre_dead",
+                                    "key_input"  :"C"
+                                },
+                                {
+                                    "state_name" : "n_realm",
+                                    "key_input"  :"D"
+                                }
+
+                            ],
+            "stim_change" : 1 
+        },
+        "sneak_n_world" : { 
+            "text" : ["Choosing to hide in the demonic abyss, you navigate the burning landscape cautiously, using<br>",
+            "twisted rocks and flames as meager cover against the watchful demons. The enslaved beings'<br>",
+            "ceaseless toil provides both a distraction and a shield for your movements. Hiding demands a<br>",
+            "delicate dance between stealth and the risk of discovery, as you observe demonic patrols and<br>",
+            "strategically use the uneven terrain for cover. Success may unveil hidden pathways and patterns<br>",
+            "in demonic movements, while failure could unleash the full wrath of the abyss upon you. The<br>",
+            "choice to hide transforms your journey into a calculated game of evasion, introducing tension<br>",
+            "and strategy to your quest through the malevolent abyss.<br><br>",
+            "As you approach one of the towering structures in the demonic abyss, the heat intensifies, and the rhythmic<br>", 
+            "sounds of enslaved beings laboring under demonic oppression become palpable. The twisted silhouette<br>",
+            "of the tower looms ominously against the fiery sky, casting long shadows that dance eerily across the burning landscape."],
+            "next_state" : [ 
+                               {
+                                    "state_name" : "sneak_n_world",
+                                    "key_input"  : "A"
+                                },
+                                {
+                                    "state_name" : "sneak_n_world",
+                                    "key_input"  :"B"
+                                },
+                                {
+                                    "state_name" : "pre_dead",
+                                    "key_input"  :"C"
+                                },
+                                {
+                                    "state_name" : "n_realm",
+                                    "key_input"  :"D"
+                                }
+
+                            ],
+            "stim_change" : 1 
+        }
+    }
+}
+
